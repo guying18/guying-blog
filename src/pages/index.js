@@ -29,10 +29,9 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
 
-  useEffect(() => {
-    window.location.href = '/blog/'
-  }, []);
-
+  // useEffect(() => {
+  //   window.location.href = '/blog/'
+  // }, []);
 
   return (
     <Layout

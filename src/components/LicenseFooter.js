@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import clsx from "clsx";
 import styles from "@site/src/pages/index.module.css";
 import BrowserOnly from '@docusaurus/BrowserOnly';
