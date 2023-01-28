@@ -1,0 +1,33 @@
+# deploy.yml
+name: "deploy-to-my-server"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - deploy
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'npm'
+      - name: "build"
+        run: |
+          npm install
+          npm run build
+      - name: "ssh deploy"
+        uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          ARGS: '-avz'
+          SOURCE: "build/"
+          TARGET: '/app/guying-blog/'
