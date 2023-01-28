@@ -11,7 +11,7 @@ const LicenseFooter = () => {
   const hrefEl = useMemo(() => {
     return (
       <div className={clsx("footer", "footer--dark", styles.footerBeian)}>
-        {`Copyright © ${new Date().getFullYear()} | `}
+        {`Copyright© ${new Date().getFullYear()} | `}
         <a className={styles.footerBeianLink} href="https://beian.miit.gov.cn/" target="_blank">{govRecordText}</a>
       </div>
     )
